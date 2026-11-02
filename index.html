@@ -2181,6 +2181,19 @@
     /* Clarity: from the autofill on, each step is part of the failure and reads red */
     .clx-side .st.on { color:var(--kpi-up-text); background:var(--kpi-up-soft); }
     .clx-side .st.on span { background:var(--kpi-up); }
+
+    /* Closing recap and the sinistralité app full screen */
+    .rc2s { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; max-width:1040px; margin:8px auto 0; }
+    .rc2 { display:flex; align-items:flex-start; gap:14px; background:var(--bg-white); border:1px solid var(--tint-grey-10); border-radius:14px; padding:18px 20px; font-size:17px; line-height:1.4; color:var(--ay-dark); }
+    .rc2 > svg { flex:0 0 26px; width:26px; height:26px; color:var(--ay-primary); margin-top:2px; }
+    .rc2 em { display:block; font-style:normal; font-weight:700; font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--ay-primary); margin-bottom:4px; }
+    .appf { width:100%; max-width:1180px; margin:0 auto; border-radius:14px; overflow:hidden; border:1px solid var(--tint-grey-10); box-shadow:0 18px 40px rgba(0,0,0,.08); background:var(--bg-white); }
+    .appf-v { position:relative; height:530px; }
+    .appf-v img, .appf-v iframe { position:absolute; inset:0; width:100%; height:100%; border:0; object-fit:cover; object-position:top; }
+    .appf-l { display:flex; align-items:center; justify-content:center; gap:8px; margin:16px auto 0; font-size:22px; font-weight:700; color:var(--ay-primary); text-decoration:none; }
+    .appf-l svg { width:20px; height:20px; }
+    .rc2 { text-align:left; }
+    .slide-inner.insights > .appf { width:1180px; max-width:none; margin:0 calc(50% - 590px); }
   </style>
 </head>
 <body>
@@ -2239,11 +2252,13 @@
       <div class="nav-item" data-slide="43"><span class="nav-item-number">44</span>Les liens des guides</div>
       <div class="nav-item" data-slide="44"><span class="nav-item-number">45</span>sinistralite.ayming.fr</div>
       <div class="nav-item" data-slide="45"><span class="nav-item-number">46</span>Pourquoi un sous-domaine</div>
-      <div class="nav-item" data-slide="46"><span class="nav-item-number">47</span>Merci</div>
+      <div class="nav-item" data-slide="46"><span class="nav-item-number">47</span>À retenir</div>
+      <div class="nav-item" data-slide="47"><span class="nav-item-number">48</span>L'outil sinistralité</div>
+      <div class="nav-item" data-slide="48"><span class="nav-item-number">49</span>Merci</div>
     </div>
   </nav>
 
-  <div class="slide-counter"><span class="current">1</span>/47</div>
+  <div class="slide-counter"><span class="current">1</span>/49</div>
 
   <main class="presentation">
 
@@ -3033,6 +3048,30 @@
             <span class="ay-row" style="--d:2.0s"><i data-lucide="send"></i><span><b>Des supports plus personnels, centrés sur le client</b>chaque RH compare son entreprise à son secteur, puis rejoint nos offres sur ayming.fr</span></span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section data-name="À retenir" class="slide airy" data-chapter="projets">
+      <div class="slide-inner insights">
+        <h1 class="slide-title compact">Ce qu'on retient de ce mois</h1>
+        <div class="rc2s">
+          <div class="rc2 ay-row" style="--d:0.20s"><i data-lucide="search"></i><span><em>SEO</em>On vise la qualité plutôt que le volume, nos pages offre montent en première page</span></div>
+          <div class="rc2 ay-row" style="--d:0.38s"><i data-lucide="sparkles"></i><span><em>IA</em>Une nouvelle façon de chercher les marques, encore à ses débuts et à explorer</span></div>
+          <div class="rc2 ay-row" style="--d:0.56s"><i data-lucide="shuffle"></i><span><em>Trafic</em>Le trafic se diversifie, et nos propres canaux convertissent le mieux</span></div>
+          <div class="rc2 ay-row" style="--d:0.74s"><i data-lucide="eye"></i><span><em>Clarity</em>Du qualitatif en plus des chiffres, pour comprendre ce que font les visiteurs</span></div>
+          <div class="rc2 ay-row" style="--d:0.92s"><i data-lucide="radar"></i><span><em>Projets</em>De nouveaux projets pour mieux suivre nos leads et mieux exploiter nos canaux non traditionnels</span></div>
+          <div class="rc2 ay-row" style="--d:1.10s"><i data-lucide="magnet"></i><span><em>Et ensuite</em>De nouveaux lead magnets et une stratégie de recommandation</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section data-name="L'outil sinistralité" class="slide airy" data-chapter="projets">
+      <div class="slide-inner insights">
+        <div class="appf ay-in" style="--d:.1s">
+          <div class="pr-bar"><span class="ay-url-dots"><i></i><i></i><i></i></span><span class="pr-url"><i data-lucide="lock"></i>sinistralite.ayming.fr</span></div>
+          <div class="appf-v"><img src="img/sini-landing.jpg" alt="La page d'accueil de sinistralite.ayming.fr"><iframe src="https://sinistralite.ayming.fr/" title="sinistralite.ayming.fr" loading="lazy"></iframe></div>
+        </div>
+        <a class="appf-l ay-pop" style="--d:.6s" href="https://sinistralite.ayming.fr/" target="_blank" rel="noopener"><i data-lucide="external-link"></i>sinistralite.ayming.fr</a>
       </div>
     </section>
 
