@@ -2179,8 +2179,8 @@
     .sbx.one .sb-k b { color:var(--kpi-up-text); }
 
     /* Clarity: from the autofill on, each step is part of the failure and reads red */
-    .st.s3.on, .st.s4.on, .st.s5.on { color:var(--kpi-down); background:var(--kpi-down-soft); }
-    .st.s3.on span, .st.s4.on span, .st.s5.on span { background:var(--kpi-down); }
+    .clx-side .st.on { color:var(--kpi-up-text); background:var(--kpi-up-soft); }
+    .clx-side .st.on span { background:var(--kpi-up); }
   </style>
 </head>
 <body>
@@ -2843,11 +2843,11 @@
               <div class="ring"></div>
             </div>
             <div class="clx-side">
-              <div class="st"><span>1</span>Un clic dans Prénom</div>
-              <div class="st"><span>2</span>Le navigateur propose une adresse enregistrée</div>
-              <div class="st s3"><span>3</span>Un choix remplit tout le formulaire, Société comprise</div>
-              <div class="st s4"><span>4</span>Société n'est jamais touché, notre liste ne s'ouvre pas</div>
-              <div class="st s5"><span>5</span>Clic sur Être rappelé(e), demande envoyée sans entreprise</div>
+              <div class="st"><span>1</span>Le navigateur remplit Société</div>
+              <div class="st"><span>2</span>Le formulaire demande de choisir l'entreprise</div>
+              <div class="st"><span>3</span>Un clic dans Société ouvre la liste</div>
+              <div class="st"><span>4</span>Le visiteur choisit son entreprise</div>
+              <div class="st"><span>5</span>Demande envoyée avec le SIRET</div>
               <figure class="proof"><img src="img/clarity-replay.gif" alt="Enregistrement Clarity réel du 5 octobre, saisies masquées"><figcaption>L'enregistrement réel, saisies masquées par Clarity</figcaption></figure>
             </div>
           </div>
@@ -2870,11 +2870,11 @@
               <div class="ring"></div>
             </div>
             <div class="clx-side">
-              <div class="st"><span>1</span>Le navigateur remplit Société, comme le 5 octobre</div>
+              <div class="st"><span>1</span>Le navigateur remplit Société</div>
               <div class="st"><span>2</span>Le formulaire demande de choisir l'entreprise</div>
-              <div class="st s3"><span>3</span>Un clic dans Société ouvre la liste</div>
-              <div class="st s4"><span>4</span>Le visiteur choisit son entreprise</div>
-              <div class="st s6"><span>5</span>Demande envoyée avec le SIRET</div>
+              <div class="st"><span>3</span>Un clic dans Société ouvre la liste</div>
+              <div class="st"><span>4</span>Le visiteur choisit son entreprise</div>
+              <div class="st"><span>5</span>Demande envoyée avec le SIRET</div>
             </div>
           </div>
           <div class="clx-bar"><i data-lucide="play"></i><div class="clx-tl"><i class="clx-prog"></i></div><span>Nouvelle mesure le 12 novembre</span></div>
@@ -3085,7 +3085,7 @@
 
   <script>
     (function () {
-      // Clarity replay, reconstituted: click in Prénom, browser autofill, every field filled, our list never opens, sent
+      // Clarity replay, reconstituted: the browser fills Société (step 1 lights), the other steps never happen, sent without the company
       function clxReset(slide, keep) {
         var clx = slide.querySelector('.clx'), cur = slide.querySelector('.cursor'), ring = slide.querySelector('.ring');
         clx.className = 'clx' + (keep ? ' ' + keep : '');
@@ -3106,16 +3106,16 @@
         var m = clxReset(slide);
         function step(n) { m.steps[n].classList.add('on'); }
         api.later(slide, 300, function () { m.clx.classList.add('play'); m.move.apply(null, m.at('.f1 .pf-in', .3, .5)); });
-        api.later(slide, 1100, function () { m.click.apply(null, m.at('.f1 .pf-in', .3, .5)); step(0); });
-        api.later(slide, 1500, function () { m.clx.classList.add('sugg'); step(1); });
+        api.later(slide, 1100, function () { m.click.apply(null, m.at('.f1 .pf-in', .3, .5)); });
+        api.later(slide, 1500, function () { m.clx.classList.add('sugg'); });
         api.later(slide, 2600, function () { m.move.apply(null, m.at('.af-r', .3, .5)); });
         api.later(slide, 3200, function () { m.clx.classList.add('hover'); });
-        api.later(slide, 3700, function () { m.click.apply(null, m.at('.af-r', .3, .5)); m.clx.classList.remove('sugg', 'hover'); m.clx.classList.add('filled'); step(2); });
+        api.later(slide, 3700, function () { m.click.apply(null, m.at('.af-r', .3, .5)); m.clx.classList.remove('sugg', 'hover'); m.clx.classList.add('filled'); step(0); });
         api.later(slide, 4300, function () { m.clx.classList.add('callout-on'); });
-        api.later(slide, 5400, function () { m.clx.classList.remove('callout-on'); step(3); });
+        api.later(slide, 5400, function () { m.clx.classList.remove('callout-on'); });
         api.later(slide, 6400, function () { m.move.apply(null, m.at('.pbtn', .45, .55)); });
         api.later(slide, 7100, function () { m.click.apply(null, m.at('.pbtn', .45, .55)); m.clx.classList.add('tap'); });
-        api.later(slide, 7350, function () { m.clx.classList.remove('tap'); m.clx.classList.add('sent'); step(4); });
+        api.later(slide, 7350, function () { m.clx.classList.remove('tap'); m.clx.classList.add('sent'); });
       });
       // Clarity fix: the same autofilled form now asks for the company, the visitor picks it, the SIRET goes with the request
       ayMotion.on('fix', function (slide, api) {
